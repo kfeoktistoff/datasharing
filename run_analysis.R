@@ -14,8 +14,8 @@ extractData <- function(dataFolder, subset) {
   y_test <- read.table(paste(dataFolder, subset, createFeedName("y", subset), sep = "/"), header = FALSE, stringsAsFactors= F, col.names = "activityId")
   X_test <- read.table(paste(dataFolder, subset, createFeedName("X", subset), sep = "/"), header = FALSE, stringsAsFactors= F, col.names = feature$name)
   
-  X_test$Activity <- merge(y_test, activity, by.x = "activityId", by.y = "id", all = TRUE)$name
-  X_test$Subject <- subject_test$subject
+  X_test$activity <- merge(y_test, activity, by.x = "activityId", by.y = "id", all = TRUE)$name
+  X_test$subject <- subject_test$subject
   
   measurements <- c("Activity", "Subject")
 

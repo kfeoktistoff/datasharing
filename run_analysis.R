@@ -52,8 +52,8 @@ if(!file.exists(fileName)){
 unzip(fileName)
 
 dataFolder <- "UCI HAR Dataset"
-dataset1 <- "dataset1.csv"
-dataset2 <- "dataset2.csv"
+dataset1 <- "dataset1.txt"
+dataset2 <- "dataset2.txt"
 
 # Reading dictionary entities
 feature <- read.table(paste(dataFolder, "./features.txt", sep = "/"), header = FALSE, col.names=c("id", "name"), stringsAsFactors= F)
@@ -68,5 +68,5 @@ colnames(wholeDataset) <- correctLabels(colnames(wholeDataset))
 groupedDataset <- ddply(wholeDataset, .(subject, activity), function(x) colMeans(x[,-c(1:2)]))
 
 # Save result files
-write.csv(wholeDataset, dataset1)
-write.csv(groupedDataset, dataset2)
+write.table(wholeDataset, dataset1)
+write.table(groupedDataset, dataset2)
